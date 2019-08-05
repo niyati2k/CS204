@@ -112,6 +112,7 @@ string division(string &a , string &b){
 			if(count<r.si) r=r.substr(count,r.si-count);
 			else r="";
 		}
+		if(small(r,b)) ans+='0';
 	}
 	b=r;
 	if(b.si==0) b="0";
