@@ -86,6 +86,7 @@ vector<node> intopost(vector<node>v){
 			}
 			else{
 				while(st.top().opr!='('&&prec(c)<=prec(st.top().opr)){
+					if(c=='^'&&st.top().opr=='^') break;
 					ans.pb(st.top());
 					st.pop();
 				}
@@ -97,7 +98,7 @@ vector<node> intopost(vector<node>v){
 			ans.pb(v[i]);
 		}
 	}
-	return ans;
+	
 }
 int eval(et * root){
 	if(root==NULL) return 0;
