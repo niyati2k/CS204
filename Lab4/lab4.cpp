@@ -98,6 +98,7 @@ vector<node> intopost(vector<node>v){
 			ans.pb(v[i]);
 		}
 	}
+	return ans;
 	
 }
 int eval(et * root){
