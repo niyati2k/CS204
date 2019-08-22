@@ -23,7 +23,7 @@ ll mod=1e9+7;
 //------------------------------------------------------------
 int prec(char c) 
 { 
-    if(c == '^') 
+    if(c == '^' || c=='$') 
     return 3; 
     else if(c == '*' || c == '/') 
     return 2; 
@@ -86,7 +86,7 @@ vector<node> intopost(vector<node>v){
 			}
 			else{
 				while(st.top().opr!='('&&prec(c)<=prec(st.top().opr)){
-					if(c=='^'&&st.top().opr=='^') break;
+					if(prec(c)==3&&prec(st.top().opr)==3) break;
 					ans.pb(st.top());
 					st.pop();
 				}
@@ -109,7 +109,7 @@ int eval(et * root){
 	int l=eval(root->left);
 	int r=eval(root->right);
 	if(root->val.opr=='+') return l+r;
-	else if(root->val.opr=='-') return l-r;
+	else if(root->val.opr=='-'||root->val.opr=='$') return l-r;
 	else if(root->val.opr=='*') return l*r;
 	else if(root->val.opr=='/') return l/r;
 	else return pow(l,r);
@@ -125,8 +125,24 @@ int main(){
 			string s="(";
 			string tmps;
 			cin>>tmps;
-			s+=tmps;
+			int c=1;
+			forl(i,0,tmps.si){
+				if(tmps[i]>='0'&&tmps[i]<='9'){
+					c=0;
+					s+=tmps[i];
+				}
+				else if(tmps[i]=='('||tmps[i]==')'){
+					s+=tmps[i];
+				}else{
+					if(c!=0&&tmps[i]=='-'){
+						s+="0$";
+					}
+					else s+=tmps[i];
+					c++;
+				}
+			}
 			s+=')';
+			//cout<<s;
 			int a=0,o=0;
 			string curr="";
 			vector<node> v;
