@@ -138,6 +138,12 @@ int main(){
 					if(!curr.si&&s[i]=='-'){
 						curr+=s[i];
 					}
+					else if(curr.si==1&&curr[0]=='-'){
+						curr+='1';
+						//i-=2;
+						s[i-1]='*';
+						i-=2;
+					}
 					else {
 						if(curr.si){
 						node n;
