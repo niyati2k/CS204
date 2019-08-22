@@ -89,6 +89,7 @@ vector<node> intopost(vector<node>v){
 			else{
 				while(st.top().opr!='('&&prec(c)<=prec(st.top().opr)){
 					if(prec(c)==3&&prec(st.top().opr)==3) break;
+					if(prec(c)==4&&prec(st.top().opr)==4) break;
 					ans.pb(st.top());
 					st.pop();
 				}
