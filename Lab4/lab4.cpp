@@ -23,8 +23,10 @@ ll mod=1e9+7;
 //------------------------------------------------------------
 int prec(char c) 
 { 
-    if(c == '^' || c=='$') 
+    if(c == '^') 
     return 3; 
+    else if(c=='$')
+	return 4;
     else if(c == '*' || c == '/') 
     return 2; 
     else if(c == '+' || c == '-') 
