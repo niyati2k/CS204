@@ -228,8 +228,15 @@ int main(){
 			if(var.si==0)cout<<eval(root)<<endl;
 			else{
 				//m[var]=eval(root);
-				key.pb(var);
-				val.pb(eval(root));
+				int check=0;
+				forl(i,0,key.si){
+					if(key[i]==var) {
+						val[i]=eval(root);
+						check=1;
+					}
+				}
+				if(!check){key.pb(var);
+				val.pb(eval(root));}
 			} 
 		}
 	}
