@@ -35,26 +35,42 @@ ll modinv(ll num){
  
 int main(){
 	fastio;
-	int n,q;
+	ll n,q;
 	cin>>n>>q;
-	ll arr[n+5]={0};
+	vector<pair<ll,ll>> v;
+	vector<ll> ids;
 	ll mx=INT_MIN,id=-1;
-	while(q--){
+	forl(i,0,q){
 		int t;
 		cin>>t;
+		ll a=-1,b=-1;
 		if(t==1){
-			int a;
-			ll b;
 			cin>>a>>b;
-			arr[a]+=b;
-			if(arr[a]>mx){
-				mx=arr[a];
-				id=a;
-			}
+			ll val=0;
+			ids.pb(a);
+			v.pb(mp(a,b));
 		}
 		else{
+			v.pb(mp(a,b));
+		}
+	}
+	sort(ids.beg,ids.en);
+//	cout<<ids[2]<<ids[3]<<endl;
+	ll arr[ids.si]={0};
+	forl(i,0,v.si){
+		if(v[i].fi==-1){
 			if(id==-1) cout<<"No data available."<<endl;
 			else cout<<id<<endl;
+		}
+		else{
+		//	vector<pair<ll,ll>>::iterator low;
+			//low=lb(ids.beg,ids.en,v[q].fi);
+			int pos = lb(ids.beg,ids.en,v[i].fi)-ids.beg;
+			arr[pos]+=v[i].se;
+			if(arr[pos]>mx){
+				mx=arr[pos];
+				id=ids[pos];
+			}
 		}
 	}
 	return 0;
