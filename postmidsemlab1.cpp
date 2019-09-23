@@ -55,7 +55,7 @@ void swap(ll *a, ll *b)
 	*b=t;
 }
 
-ll partition(ll arr[],ll l,ll r,llx)
+ll partition(ll arr[],ll l,ll r,ll x)
 {
 	ll i;
 	for(i=l;i<r;i++)
