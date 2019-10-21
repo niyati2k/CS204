@@ -73,7 +73,7 @@ int main(){
 	int ans=0;
 	for(auto i:mp){
 		vis[j]=1;
-		ans=max(ans,bfs(i.fi.fi,i.fi.se,vis));
+		if(!vis[j]) ans=max(ans,bfs(i.fi.fi,i.fi.se,vis));
 		j++;
 	}
 	cout<<ans;
